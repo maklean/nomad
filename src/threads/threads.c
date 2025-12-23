@@ -51,15 +51,6 @@ DWORD WINAPI WorkerThread(LPVOID param) {
 
         switch(client_ctx->operation) {
             case OP_ACCEPT:
-                if(setsockopt(client_socket, SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, (char*)&ctx->server_socket, sizeof(ctx->server_socket)) == SOCKET_ERROR) {
-                    printf("Failed to link client socket to server socket.\n");
-
-                    closesocket(client_socket);
-                    FreeClientContext(client_ctx);
-
-                    break;
-                }
-
                 if(ReceiveDataFromClient(client_socket) != 0) {
                     printf("Failed to receive data from client socket.\n");
 
