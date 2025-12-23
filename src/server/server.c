@@ -53,7 +53,7 @@ ServerContext *NewServerContext(SOCKET server_socket, HANDLE iocp_handle) {
     
     ZeroMemory(ctx, sizeof(ServerContext));
 
-    // to use the AcceptEx() function
+    // to use the AcceptEx() function, from: https://learn.microsoft.com/en-us/windows/win32/api/mswsock/nf-mswsock-acceptex#example-code
     DWORD bytes = 0;
     GUID guid_accept_ex = WSAID_ACCEPTEX;
 
